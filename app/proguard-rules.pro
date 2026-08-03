@@ -1,4 +1,0 @@
--keep class com.example.musicplayer.data.model.** { *; }
--keep class com.example.musicplayer.data.api.** { *; }
--dontwarn okhttp3.**
--dontwarn retrofit2.**

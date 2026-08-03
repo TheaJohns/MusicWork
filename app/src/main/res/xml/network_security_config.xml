@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- 默认：禁止明文流量（Manifest 中 usesCleartextTraffic=false 已兜底，此处再明确） -->
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+
+    <!--
+        R9：仅对在线外链媒体域名放行明文（cleartext）。
+        优先 HTTPS；若某些媒体外链为 http，仅把对应域名加入下方 domain-config。
+        API 域名（api.apiopen.top）为 HTTPS，不受影响。
+        TODO: 将实际媒体 CDN 域名替换为下方占位域名。
+    -->
+    <domain-config cleartextTrafficPermitted="true">
+        <!-- 网易云外链与封面均为 http，按 R9 仅放行这些媒体域名（API 域名为 https 不受影响） -->
+        <domain includeSubdomains="true">music.163.com</domain>
+        <domain includeSubdomains="true">music.126.net</domain>
+    </domain-config>
+</network-security-config>
